@@ -20,12 +20,18 @@
                     <img src="{% static "img/menu.svg" %}" height='50px' width='50px' alt="">
                 </div>
                 <div class="nav_part_logo">
-                    Лого
+                    <a href="/">Лого</a>
                 </div>
             </div>
+            {% if user.is_authenticated %}
             <div class="nav_part">
-                Авторизация
+                <button onclick="location.href='profile'">{{ user.username }}</button>
             </div>
+            {% else %}
+            <div class="nav_part">
+                <button onclick="location.href='{% url 'login' %}'">Авторизация</button>
+            </div>
+            {% endif %}
         </div>
     </header>
     {% block divs %}
